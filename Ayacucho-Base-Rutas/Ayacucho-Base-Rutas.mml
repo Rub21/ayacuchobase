@@ -1,0 +1,530 @@
+{
+  "bounds": [
+    -180,
+    -85.05112877980659,
+    180,
+    85.05112877980659
+  ],
+  "center": [
+    -74.22527164220728,
+    -13.160380576736465,
+    19
+  ],
+  "format": "png",
+  "interactivity": false,
+  "minzoom": 0,
+  "maxzoom": 22,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "roads.mss",
+    "palette.mss",
+    "base.mss",
+    "places.mss"
+  ],
+  "Layer": [
+    {
+      "id": "countries",
+      "name": "countries",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "geometry": "polygon",
+      "Datasource": {
+        "file": "http://mapbox-geodata.s3.amazonaws.com/natural-earth-1.3.0/cultural/10m-admin-0-countries.zip",
+        "type": "shape"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "processed_p",
+      "id": "processed_p",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "file": "http://tilemill-data.s3.amazonaws.com/osm/processed_p.zip"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "shoreline_300",
+      "id": "shoreline_300",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "file": "http://tilemill-data.s3.amazonaws.com/osm/shoreline_300.zip"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "landuse_gen0",
+      "id": "landuse_gen0",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, round(st_area(geometry)) as area\nfrom osm_landusages_gen0\norder by area desc) as landusages",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234",
+        "id": "landuse_gen0",
+        "project": "Ayacucho-Base-Rutas"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "landuse_gen1",
+      "id": "landuse_gen1",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, round(st_area(geometry)) as area\nfrom osm_landusages_gen1\norder by area desc) as landusages",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234",
+        "id": "landuse_gen1",
+        "project": "Ayacucho-Base-Rutas"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "landuse",
+      "id": "landuse",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, round(st_area(geometry)) as area\nfrom osm_landusages\norder by area desc) as landusages",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234",
+        "id": "landuse",
+        "project": "Ayacucho-Base-Rutas"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "waterway",
+      "id": "waterway",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type\nfrom osm_waterways\n) as waterway",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "water_gen0",
+      "id": "water_gen0",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry\nfrom osm_waterareas\nwhere round(st_area(geometry)) > 10000\n) as water",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "water_gen1",
+      "id": "water_gen1",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry\nfrom osm_waterareas\nwhere round(st_area(geometry)) > 1000\n) as water",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "water",
+      "id": "water",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry\nfrom osm_waterareas\n) as water",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "landuse_overlays",
+      "id": "landuse_overlays",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, round(st_area(geometry)) as area\nfrom osm_landusages\norder by area desc) as landusages",
+        "key_field": "",
+        "geometry_field": "",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "name": "admin",
+      "id": "admin",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "osm_admin",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "buildings",
+      "id": "buildings",
+      "srs": "+init=epsg:3785",
+      "class": "",
+      "Datasource": {
+        "table": "(select type, name, geometry from osm_buildings) as foo",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "name": "transport_areas",
+      "id": "transport_areas",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type\nfrom osm_transport_areas\n) as transport",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234",
+        "id": "transport_areas",
+        "project": "Ayacucho-Base-Rutas"
+      }
+    },
+    {
+      "name": "aeroway",
+      "id": "aeroway",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type from osm_aeroways\n) as aeroway",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234",
+        "id": "aeroway",
+        "project": "Ayacucho-Base-Rutas"
+      }
+    },
+    {
+      "name": "rail",
+      "id": "rail",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, tunnel\nfrom osm_railways\n) as railway",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "name": "turning_circle_case",
+      "id": "turning_circle_case",
+      "srs": "+init=epsg:3857",
+      "class": "turning_circle case",
+      "Datasource": {
+        "table": "(select geometry from osm_transport_points where type = 'turning_circle') as foo",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "roads_high",
+      "id": "roads_high",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "( select geometry, type, tunnel from osm_roads where type in \n('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'road', 'residential', 'unknown', 'unclassified', 'living_street', 'service')\norder by z_order) as road",
+        "key_field": "",
+        "geometry_field": "",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "roads_med",
+      "id": "roads_med",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type,bridge,tunnel from osm_roads_gen1) as road",
+        "key_field": "",
+        "geometry_field": "",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "roads_low",
+      "id": "roads_low",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type,bridge,tunnel from osm_roads_gen0) as road",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "name": "turning_circle_fill",
+      "id": "turning_circle_fill",
+      "srs": "+init=epsg:3857",
+      "class": "turning_circle fill",
+      "Datasource": {
+        "table": "(select geometry from osm_transport_points where type = 'turning_circle') as foo",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "name": "bridge",
+      "id": "bridge",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, bridge, z_order\nfrom osm_roads where bridge = 1\norder by z_order) as road",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "point",
+      "name": "place",
+      "id": "place",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, name, z_order, population\nfrom osm_places\norder by z_order, population desc\n) as places",
+        "key_field": "",
+        "geometry_field": "",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234",
+        "id": "place",
+        "project": "Ayacucho-Base-Rutas"
+      }
+    },
+    {
+      "name": "motorway_label",
+      "id": "motorway_label",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, name, ref, oneway\nfrom osm_motorways\nwhere name is not null or ref is not null or oneway = 1\n) as label",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "mainroad_label",
+      "id": "mainroad_label",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, name, oneway\nfrom osm_mainroads\nwhere name is not null or oneway = 1\n) as label",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "minorroad_label",
+      "id": "minorroad_label",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, name, oneway\nfrom osm_minorroads\nwhere name is not null or oneway = 1\n) as label",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "landuse_label",
+      "id": "landuse_label",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, name, round(st_area(geometry)) as area\nfrom osm_landusages\nwhere name is not null\norder by area desc) as label",
+        "key_field": "",
+        "geometry_field": "",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "polygon",
+      "name": "water_label",
+      "id": "water_label",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, name, round(st_area(geometry)) as area\nfrom osm_waterareas\nwhere type != 'riverbank' and name is not null\n) as label",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    },
+    {
+      "geometry": "linestring",
+      "name": "waterway_label",
+      "id": "waterway_label",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "class": "",
+      "Datasource": {
+        "table": "(select geometry, type, name, round(st_length(geometry)) as length\nfrom osm_waterways\nwhere type in ('canal', 'river', 'stream') and name is not null\n) as label",
+        "key_field": "",
+        "geometry_field": "geometry",
+        "extent": "",
+        "type": "postgis",
+        "dbname": "bdimposm1310",
+        "host": "localhost",
+        "user": "root",
+        "password": "1234"
+      }
+    }
+  ],
+  "name": "Ayacucho-Base-Rutas",
+  "description": "By Ruben"
+}
